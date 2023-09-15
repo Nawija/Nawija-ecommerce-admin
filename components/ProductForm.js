@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
+import { AiOutlineCloudUpload } from "react-icons/ai";
+
 export default function ProductForm({
     _id,
     title: existingTitle,
@@ -31,13 +33,15 @@ export default function ProductForm({
         router.push("/produkty");
     }
 
-    function uploadImages() {
-        const files = ev.target?.files
-        if ( files?.length > 0){
-            const data = new FormData()
-            files.array.forEach(element => {
-                
-            });
+    async function uploadImages(ev) {
+        const files = ev.target?.files;
+        if (files?.length > 0) {
+            const data = new FormData();
+            for (const file of files) {
+                data.append("file", file);
+            }
+            const res = await axios.post("/api/upload", data);
+            console.log(res.data);
         }
     }
     return (
@@ -46,11 +50,16 @@ export default function ProductForm({
                 <label>
                     <h2 className="text-h2">Zdjęcie</h2>
                     <div className="mb-4 h-52 w-full bg-white border-dashed border-2 rounded-lg border-gray-800 relative">
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-gray-400">
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-gray-400 flex items-center justify-center flex-col">
+                            <p className="btn-main flex-c">
+                                <AiOutlineCloudUpload className="mr-1 text-xl" />
+                                Wybierz plik
+                            </p>
                             <input
                                 value={images}
                                 onChange={uploadImages}
                                 type="file"
+                                className="hidden"
                             />
                         </div>
                     </div>
