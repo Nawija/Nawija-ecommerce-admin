@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import "@/styles/animations.css";
+import "@/styles/Spinner.css"
 
 import { SessionProvider } from "next-auth/react";
 

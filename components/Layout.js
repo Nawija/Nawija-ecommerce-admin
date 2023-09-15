@@ -20,7 +20,7 @@ export default function Layout({ children }) {
     return (
         <div className="bg-gray-800 w-screen text-white min-h-screen flex ">
             <Nav />
-            <div className="my-4 mr-4 rounded-lg p-6 bg-gray-100 flex-grow text-main">
+            <div className="my-4 mr-4 rounded-lg p-6 bg-gray-100 flex-grow text-main relative">
                 {children}
             </div>
         </div>

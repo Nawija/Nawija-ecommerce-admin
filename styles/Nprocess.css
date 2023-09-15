@@ -1,0 +1,29 @@
+#nprogress {
+    overflow: hidden !important;
+    z-index: 10000;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: hsla(0, 0%, 0%, 0.08);
+    backdrop-filter: blur(9px);
+}
+
+/* #nprogress .bar {
+    background: #e7d10c !important;
+}
+
+#nprogress .spinner-icon {
+    border-bottom: 6px solid #e7d10c !important;
+    border-top: 6px solid transparent !important;
+    border-left: 6px solid transparent !important;
+    border-right: 6px solid transparent !important;
+    border-radius: 19px;
+    height: 110px !important;
+    width: 110px !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */

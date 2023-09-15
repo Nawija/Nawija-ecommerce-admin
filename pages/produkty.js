@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Spinner from "@/components/Spinner";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -7,18 +8,25 @@ import { LiaEdit } from "react-icons/lia";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 export default function Produkty() {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
     const [products, setProducts] = useState([]);
     useEffect(() => {
         axios.get("/api/produkty").then((response) => {
             setProducts(response.data);
+            setImageLoaded(true);
         });
     }, []);
     return (
         <Layout>
-            <Link className="btn-main" href="/produkty/dodaj-produkt">
-                Dodaj Produkt
-            </Link>
-            <table className="basic mt-6">
+            {!imageLoaded && <Spinner />}
+
+            <div className="anim-opacity">
+                <Link className="btn-main" href="/produkty/dodaj-produkt">
+                    Dodaj Produkt
+                </Link>
+            </div>
+            <table className="basic mt-6 anim-opacity">
                 <thead>
                     <tr>
                         <td>Nazwa Produktu</td>
@@ -45,7 +53,7 @@ export default function Produkty() {
                                     href={`/produkty/edytuj/` + product._id}
                                     className="text-[15px] flex-c"
                                 >
-                                    <LiaEdit className="mr-1.5"/>
+                                    <LiaEdit className="mr-1.5" />
                                     Edytuj
                                 </Link>
                             </td>

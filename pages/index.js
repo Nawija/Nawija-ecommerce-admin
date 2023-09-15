@@ -6,8 +6,8 @@ export default function Home() {
 
     return (
         <Layout>
-            <div className="flex-c flex-col min-h-full text-center">
-                <div>
+            <div className="flex-c flex-col min-h-full -mt-20 text-center anim-opacity">
+                <div className="flex items-center justify-center flex-col">
                     <img
                         className="rounded-full"
                         src={`${session?.user?.image}`}
@@ -19,6 +19,7 @@ export default function Home() {
                     panelu administracyjnego
                 </p>
             </div>
+            
         </Layout>
     );
 }
