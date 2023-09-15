@@ -3,6 +3,9 @@ import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { LiaEdit } from "react-icons/lia";
+import { RiDeleteBinLine } from "react-icons/ri";
+
 export default function Produkty() {
     const [products, setProducts] = useState([]);
     useEffect(() => {
@@ -30,17 +33,19 @@ export default function Produkty() {
                             <td>
                                 {product.price} <small>zł</small>
                             </td>
-                            <td className="text-end space-x-3">
+                            <td className="space-x-3 flex-ec">
                                 <Link
                                     href={`/produkty/usun/` + product._id}
-                                    className="text-[15px] text-red-500"
+                                    className="text-[15px] text-red-500 flex-c"
                                 >
+                                    <RiDeleteBinLine className="mr-1.5" />
                                     Usuń
                                 </Link>
                                 <Link
                                     href={`/produkty/edytuj/` + product._id}
-                                    className="text-[15px]"
+                                    className="text-[15px] flex-c"
                                 >
+                                    <LiaEdit className="mr-1.5"/>
                                     Edytuj
                                 </Link>
                             </td>

@@ -6,7 +6,19 @@ export default function Home() {
 
     return (
         <Layout>
-            <p className="text-xl text-main">Hello, {session?.user?.name}</p>
+            <div className="flex-c flex-col min-h-full text-center">
+                <div>
+                    <img
+                        className="rounded-full"
+                        src={`${session?.user?.image}`}
+                    />
+                    <p className="text-h1">Witaj, {session?.user?.name}</p>
+                </div>
+                <p className="text-p">
+                    dowiedz sie wiecej jak korzystac z naszego autorskiego
+                    panelu administracyjnego
+                </p>
+            </div>
         </Layout>
     );
 }

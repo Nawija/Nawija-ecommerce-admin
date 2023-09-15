@@ -52,18 +52,26 @@ table.basic {
 }
 
 table.basic thead tr td {
-    background-color: #1f1f1f; /* Tutaj ustaw kolor tła nagłówka */
+    background-color: #434349;
     font-weight: 600;
     color: white;
 }
 
 table.basic tr td {
-    border: 1px solid #d1d5db; /* Tutaj ustaw styl obramowania */
+    border: 1px solid #d1d5db;
     padding: 0.33rem 0.6rem;
+    font-weight: 500;
+}
+table.basic tr td a {
+    border: 1px solid #d1d5db;
+    padding: 0.25rem .5rem;
+    background-color: #ffffff;
+    font-weight: 500;
+    border-radius: 9px;
 }
 
 table.basic tbody tr:hover td {
-    background-color: #dee5f1; /* Tutaj ustaw kolor tła dla wierszy po najechaniu kursorem */
+    background-color: #dee5f1;
 }
 
 .flex-c {
@@ -86,7 +94,7 @@ table.basic tbody tr:hover td {
     align-items: flex-end;
     justify-content: flex-end;
 }
-.flex-e {
+.flex-ec {
     display: flex;
     align-items: center;
     justify-content: flex-end;

@@ -25,7 +25,7 @@ export default function Nav() {
                 />
                 <p>{session.user.email}</p>
                 <button
-                    className="font-bold text-gray-100 flex-c ml-1 p-2 text-xl rounded-full hover:bg-white/20 hover:text-red-500 transition-colors"
+                    className="font-bold text-gray-100 flex-c ml-1 p-1 text-xl rounded-full hover:bg-white hover:text-red-500 transition-colors"
                     onClick={() => signOut()}
                 >
                     <BiExit />
