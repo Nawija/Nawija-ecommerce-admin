@@ -30,31 +30,34 @@ export default function Produkty() {
                 <thead>
                     <tr>
                         <td>Nazwa Produktu</td>
-                        <td>Cena</td>
+                        <td>PLN</td>
                         <td></td>
                     </tr>
                 </thead>
                 <tbody>
-                    {products.map((product) => (
-                        <tr>
+                    {products.map((product, index) => (
+                        <tr key={index}>
                             <td>{product.title}</td>
                             <td>
-                                {product.price} <small>zł</small>
+                                {product.price}
+                                <span className="text-gray-500 font-normal ml-1 -tracking-widest">
+                                    ,-
+                                </span>
                             </td>
-                            <td className="space-x-3 flex-ec">
+                            <td className="lg:space-x-3 lg:flex lg:items-center lg:justify-end">
                                 <Link
                                     href={`/produkty/usun/` + product._id}
-                                    className="text-[15px] text-red-500 flex-c"
+                                    className="text-[15px] text-red-500 flex-c mb-2 lg:mb-0 hover:bg-slate-100 transition-colors"
                                 >
-                                    <RiDeleteBinLine className="mr-1.5" />
-                                    Usuń
+                                    <RiDeleteBinLine className="md:mr-1.5 mr-0 text-2xl lg:text-base" />
+                                    <span className="hidden md:flex items-center">Usuń</span>
                                 </Link>
                                 <Link
                                     href={`/produkty/edytuj/` + product._id}
-                                    className="text-[15px] flex-c"
+                                    className="text-[15px] flex-c hover:bg-slate-100 transition-colors"
                                 >
-                                    <LiaEdit className="mr-1.5" />
-                                    Edytuj
+                                    <LiaEdit className="md:mr-1.5 mr-0 text-2xl lg:text-base" />
+                                    <span className="hidden md:flex items-center">Edytuj</span>
                                 </Link>
                             </td>
                         </tr>

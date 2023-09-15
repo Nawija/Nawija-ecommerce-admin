@@ -1,5 +1,10 @@
 import Layout from "@/components/Layout";
 
 export default function Inne() {
-    return <Layout>Inne rzeczy tutaj</Layout>;
+    return (
+        <Layout>
+            <p className="text-h1">Inne rzeczy</p>
+            <p>w trakcie budowy</p>
+        </Layout>
+    );
 }

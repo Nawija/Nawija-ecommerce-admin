@@ -11,13 +11,13 @@ export default function ProductForm({
     const [title, setTitle] = useState(existingTitle || "");
     const [desc, setDesc] = useState(existingDesc || "");
     const [price, setPrice] = useState(existingPrice || "");
+    const [images, setImages] = useState(existingPrice || "");
     const [goToProduct, setGoToProduct] = useState(false);
     const router = useRouter();
-    const [cleanForm, setCleanForm] = useState(false);
 
     async function saveProduct(ev) {
         ev.preventDefault();
-        const data = { title, desc, price };
+        const data = { title, desc, price, images };
         if (_id) {
             //update
             await axios.put("/api/produkty", { ...data, _id });
@@ -31,23 +31,40 @@ export default function ProductForm({
         router.push("/produkty");
     }
 
-    function clearInputs() {
-        setTitle("");
-        setDesc("");
-        setPrice("");
-    }
-    function handleCleanForm() {
-        setCleanForm(!cleanForm);
+    function uploadImages() {
+        const files = ev.target?.files
+        if ( files?.length > 0){
+            const data = new FormData()
+            files.array.forEach(element => {
+                
+            });
+        }
     }
     return (
         <>
             <form onSubmit={saveProduct}>
-                <input
-                    type="text"
-                    placeholder="Nazwa produktu"
-                    value={title}
-                    onChange={(ev) => setTitle(ev.target.value)}
-                />
+                <label>
+                    <h2 className="text-h2">Zdjęcie</h2>
+                    <div className="mb-4 h-52 w-full bg-white border-dashed border-2 rounded-lg border-gray-800 relative">
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-gray-400">
+                            <input
+                                value={images}
+                                onChange={uploadImages}
+                                type="file"
+                            />
+                        </div>
+                    </div>
+                </label>
+                <label>
+                    <h2 className="text-h2">Nagłówek</h2>
+                    <input
+                        type="text"
+                        placeholder="Nazwa produktu"
+                        value={title}
+                        onChange={(ev) => setTitle(ev.target.value)}
+                    />
+                </label>
+
                 <label>
                     <h2 className="text-h2">Szczegółowy Opis</h2>
                     <textarea
@@ -67,35 +84,9 @@ export default function ProductForm({
                 </label>
             </form>
             <div className="mt-4">
-                <button className="btn-delete mr-4" onClick={handleCleanForm}>
-                    Usuń Wszystko
-                </button>
                 <button onClick={saveProduct} className="btn-main">
                     Zapisz
                 </button>
-                {cleanForm ? (
-                    <div className="absolute top-0 left-0 h-full w-full bg-red-500/90 flex-c anim-opacity overflow-hidden">
-                        <div className="p-10 bg-gray-100 text-center shadow-2xl anim-scale">
-                            <p className="text-h2 pb-6">
-                                Jesteś pewny ze chcesz wyczyścic formularz?
-                            </p>
-                            <button
-                                className="btn-delete mr-4"
-                                onClick={clearInputs && handleCleanForm}
-                            >
-                                Usuń
-                            </button>
-                            <button
-                                onClick={handleCleanForm}
-                                className="btn-main "
-                            >
-                                Nie usuwaj!
-                            </button>
-                        </div>
-                    </div>
-                ) : (
-                    ""
-                )}
             </div>
         </>
     );
