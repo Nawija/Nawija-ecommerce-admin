@@ -9,11 +9,11 @@ export default function ProductForm({
     title: existingTitle,
     desc: existingDesc,
     price: existingPrice,
+    images,
 }) {
     const [title, setTitle] = useState(existingTitle || "");
     const [desc, setDesc] = useState(existingDesc || "");
     const [price, setPrice] = useState(existingPrice || "");
-    const [images, setImages] = useState(existingPrice || "");
     const [goToProduct, setGoToProduct] = useState(false);
     const router = useRouter();
 
@@ -40,8 +40,11 @@ export default function ProductForm({
             for (const file of files) {
                 data.append("file", file);
             }
-            const res = await axios.post("/api/upload", data);
-            console.log(res.data);
+            const res = await fetch("/api/upload", {
+                method: "POST",
+                body: data,
+            });
+            console.log(res);
         }
     }
     return (
