@@ -90,6 +90,28 @@ export default function Nav() {
                         <AiFillSetting className="text-3xl mr-2" />
                         <span>Ustawienia</span>
                     </Link>
+                    <Link
+                        href={"/ustawienia"}
+                        className={
+                            pathname.includes("/ustawienia")
+                                ? activeLink
+                                : inActiveLink
+                        }
+                    >
+                        <AiFillSetting className="text-3xl mr-2" />
+                        <span>Ustawienia</span>
+                    </Link>
+                    <Link
+                        href={"/ustawienia"}
+                        className={
+                            pathname.includes("/ustawienia")
+                                ? activeLink
+                                : inActiveLink
+                        }
+                    >
+                        <AiFillSetting className="text-3xl mr-2" />
+                        <span>Ustawienia</span>
+                    </Link>
                 </nav>
             </aside>
         </>
